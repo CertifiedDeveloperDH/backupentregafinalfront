@@ -1,13 +1,29 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Card from "../Components/Card";
-import { apiContext } from "../context/apiContext";
-
+//import { apiContext } from "../context/apiContext";
+//import axios from 'axios'
 const Home = () => {
-  let [listaDentistas, setDentistas] = useState([])
-  let {dentistas} = useContext(apiContext)
+  //let {dentistas, dispatch} = useContext(apiContext)
+  const [dentistas, setDentistas] = useState([])
   useEffect(() => {
-    setDentistas(dentistas)
-    console.log(listaDentistas)
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
+      .then((data) => {
+        //dispatch({ type: "fetchApi", payload: data });
+        console.log(data)
+        setDentistas(data)
+        console.log(dentistas)
+      })
+      .catch((error) => {
+        //throw new Error(error)
+        //dispatch({ type: "SET_ERROR", payload: error.message });
+      });
   }, []);
 
   return (

@@ -2,12 +2,27 @@ import axios from 'axios'
 function reducer(state, action){
     switch (action.type){
         case 'fetchApi':
-            axios.get('https://jsonplaceholder.typicode.com/users')
+            return {
+        ...state,
+        data: action.payload,
+        loading: false,
+      };
+            /*let respuesta = []
+            let datos = axios.get('https://jsonplaceholder.typicode.com/users')
             .then(response => {
                 //console.log(response.data)
-                state = response.data
+                return response.data
             })
-            return state
+            let pasarDatos = async () => {
+                    let respuestaDatos = await datos
+                    //console.log(respuestaDatos)
+                    return datos
+                    //respuesta = respuestaDatos
+            }
+            console.log(pasarDatos())
+            //console.log(respuesta)
+            //console.log(datos)
+            return state*/
         case 'changeTheme':
             if (state === "light"){
                 state = "dark"

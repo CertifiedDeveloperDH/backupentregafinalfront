@@ -4,9 +4,9 @@ import reducer from "../reducer/reducer.js"
 
 const ApiContextProvider = ({children}) => {
     const [dentistas, dispatch] = useReducer(reducer, [])
-    const apiDentistas = () => dispatch({type: "fetchApi"})
+    //const apiDentistas = () => dispatch({type: "fetchApi"})
     return (
-        <apiContext.Provider value={{dentistas, apiDentistas}}>
+        <apiContext.Provider value={{dentistas, dispatch}}>
             {children}
         </apiContext.Provider>
     )
