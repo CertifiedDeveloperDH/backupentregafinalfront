@@ -6,7 +6,16 @@ const Home = () => {
   //let {dentistas, dispatch} = useContext(apiContext)
   const [dentistas, setDentistas] = useState([])
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    const getTodos = async () => {
+      const response = await fetch(
+          "https://jsonplaceholder.typicode.com/users"
+      );
+      const data = await response.json();
+      console.log(data)
+      setDentistas(data);
+    };
+    getTodos();
+    /*fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -23,15 +32,15 @@ const Home = () => {
       .catch((error) => {
         //throw new Error(error)
         //dispatch({ type: "SET_ERROR", payload: error.message });
-      });
+      });*/
   }, []);
 
   return (
     <>
       <h1>Home</h1>
       <div className="card-grid container">
-        {dentistas.map((dentista) => {
-          <Card key= {dentista.id} id={dentista.id} name={dentista.name} username={dentista.username}/>
+        {dentistas && dentistas.map((dentista) => {
+          return (<Card key= {dentista.id} id={dentista.id} name={dentista.name} username={dentista.username}/>)
         })}
       </div>
     </>
