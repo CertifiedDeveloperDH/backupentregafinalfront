@@ -16,12 +16,12 @@ const Card = ({id, name, username}) => {
           alt="doctor placeholder"
         />
         <div className={`card-body ${styles.CardBody}`}>
-          <Link to={`/dentist/${dentista.id}`}>
+          <Link to={`/dentist/${id}`}>
             <h5 className={`card-title ${styles.title}`}>Nombre: {name}</h5>
             <h5 className={`card-title ${styles.title}`}>Usuario: {username}</h5>
           </Link>
         </div>
-        <button type="button" className= {`btn btn-${theme} ${styles.favButton}`} onClick={addFav(id)}>Add fav</button>
+        <button type="button" className= {`btn btn-${theme} ${styles.favButton}`} onClick={()=> addFav(id)}>Add fav</button>
       </div>
     </>
   );

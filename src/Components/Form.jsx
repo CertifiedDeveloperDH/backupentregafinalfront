@@ -45,7 +45,6 @@ const Form = () => {
               className={`form-control ${styles.inputSpacing}`}
               placeholder="Email"
               name="email"
-              type="email"
               value={email}
               onChange={(e) => {setEmail(e.target.value)}}
               required
@@ -54,6 +53,7 @@ const Form = () => {
               Send
             </button>
           </form>
+          <Mensaje success={success} nombre={nombre} submited={submited}/>
         </div>
       </div>
     </>
